@@ -11,6 +11,13 @@ class CrashGroupsController < ApplicationController
     @crashes = @group.crashes.order("created_at DESC").limit(15)
   end
 
+  def resolve
+    @group = @current_project.crash_groups.find(params[:id])
+    @group.resolve!
+
+    redirect_to [@current_project, @group]
+  end
+
   protected
     def preload_resource!
       @current_project = Project.find(params[:project_id])

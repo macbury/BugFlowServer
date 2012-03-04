@@ -1,6 +1,8 @@
 Bugflow::Application.routes.draw do
   resources :projects do
-    resources :crash_groups
+    resources :crash_groups do
+      get :resolve, on: :member
+    end
   end
 
   # The priority is based upon order of creation:

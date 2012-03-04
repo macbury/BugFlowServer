@@ -37,4 +37,4 @@
             = distance_of_time_in_words group.last_error_time, Time.zone.now
             ago
         %td
-          .label.label-info{ :style => "text-align: center" }= group.crashes_count || 0
+          .label{ :style => "text-align: center", class: group.resolved? ? "label-success" : "label-important" }= group.crashes_count || 0

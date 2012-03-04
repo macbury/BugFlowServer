@@ -14,7 +14,14 @@ class Project < ActiveRecord::Base
     self.save
   end
 
-  def import(crash)
+  def import(crashes)
+    puts "importing #{crashes.size}"
+    YAML.load(crashes).each do |crash|
+      import_one(crash.symbolize_keys)
+    end
+  end
+
+  def import_one(crash)
     crash_group_hash = Digest::SHA1.hexdigest([self.id, crash[:location], crash[:exception][:message], crash[:exception][:class_name]].compact.join("-"))
     crash_group = self.crash_groups.find_or_initialize_by_hash_uid(crash_group_hash)
     crash_group.message ||= crash[:exception][:message]
@@ -23,6 +30,7 @@ class Project < ActiveRecord::Base
     crash_group.last_error_time = Time.zone.now
     crash_group.crashes_count ||= 0
     crash_group.crashes_count += 1
+    crash_group.resolved = false
     crash_group.save
 
     crash_group.crashes.create backtrace: crash[:exception][:backtrace], env: crash[:environment]

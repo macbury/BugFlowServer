@@ -11,6 +11,11 @@
 
 .row
   .span2
+    - unless @group.resolved?
+      = link_to resolve_project_crash_group_path(@current_project, @group), class: "btn btn-danger btn-large", style: "display: block" do
+        %i.icon-ok.icon-white
+        Resolve
+    %br/
     %h6 Timeline
 
     %ul.nav.nav-pills.nav-stacked

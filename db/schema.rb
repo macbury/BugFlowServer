@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120303111115) do
+ActiveRecord::Schema.define(:version => 20120304201114) do
 
   create_table "crash_groups", :force => true do |t|
     t.integer  "project_id"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(:version => 20120303111115) do
     t.string   "class_name"
     t.string   "location"
     t.integer  "crashes_count"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.datetime "last_error_time"
+    t.boolean  "resolved",        :default => false
   end
 
   create_table "crashes", :force => true do |t|
