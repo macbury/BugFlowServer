@@ -1,0 +1,50 @@
+!!!
+%html
+  %head
+    %title BugFlow
+    = csrf_meta_tags
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+
+  %body{ :id => "controller_#{controller.controller_name}_#{controller.action_name}" }
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to root_url, class: "brand" do
+            BugFlow
+            %sup{ style: "color: red;" } Beta
+          %ul.nav.pull-left
+            %li.dropdown
+              = link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do
+                %i.icon-fire
+                My Apps
+                %b.caret
+              %ul.dropdown-menu
+                - Project.all.each do |project|
+                  %li= link_to project.name, project
+                %li.divider
+                %li= link_to "Show All", projects_path
+            %li
+              = link_to "#" do
+                %i.icon-cog
+                Settings
+
+            %li.divider-vertical
+            %li
+              = link_to new_project_path, id: "submit_app" do
+                %i.icon-plus
+                Add project
+          %ul.nav.pull-right
+            %li
+              = link_to "#" do
+                %i.icon-off
+                Logout
+      .clear 
+    
+    .clear
+    .container
+      = render partial: "shared/flash_messages"
+      .clear
+      = yield
+      .clear
+    = yield :footer

@@ -1,0 +1,31 @@
+.page-header
+  %h2 
+    Templaty
+    %small your project
+
+%ul.nav.nav-pills
+  %li.active= link_to "All", "#"
+  %li= link_to "Fixed", "#"
+  %li= link_to "Pending", "#"
+  %li.pull-right{ style: "float: right" }= link_to "Install Gem", "#"
+
+%table.table.table-striped.table-bordered
+  %thead
+    %th.span1 UID
+    %th Message
+    %th.span3 Location
+    %th.span2 Latest
+    %th.span1 Count
+  %tbody
+    - 60.times do
+      %tr
+        %td
+          \#22
+        %td
+          %a{ href: "#" } (NameError) "undefined local variable or method `keywords_url' for #<KeywordsController:0x2b88debb7960>"
+        %td
+          Dashboard#index
+        %td
+          10 seconds ago
+        %td
+          .label.label-info 10

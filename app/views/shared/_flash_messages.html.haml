@@ -1,0 +1,5 @@
+
+- flash.each do |type, msg|
+  .alert{ class: ["alert",type].join("-") }
+    %a.close{ href: "#" } ×
+    = msg

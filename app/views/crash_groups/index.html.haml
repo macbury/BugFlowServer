@@ -1,0 +1,40 @@
+.row
+  .span12
+    %ul.breadcrumb
+      %li
+        = link_to "Projects", projects_path
+        %span.divider /
+      %li= @current_project.name
+
+%ul.nav.nav-pills
+  %li.active= link_to "All", "#"
+  %li= link_to "Fixed", "#"
+  %li= link_to "Pending", "#"
+
+%table.table.table-striped.table-bordered
+  %thead
+    %th.span1 UID
+    %th Message
+    %th.span3 Location
+    %th.span2 Class Name
+    %th.span2 Latest
+    %th.span1 Count
+  %tbody
+    - if @groups.empty?
+      %tr
+        %td{ colspan: 6 }
+          No Errors :)
+    - @groups.each do |group|
+      %tr
+        %td= '#'+group.id.to_s
+        %td= link_to group.message, [@current_project, group]
+        %td= group.location
+        %td= group.class_name
+        %td
+          - if group.last_error_time.nil?
+            undefined
+          - else
+            = distance_of_time_in_words group.last_error_time, Time.zone.now
+            ago
+        %td
+          .label.label-info{ :style => "text-align: center" }= group.crashes_count || 0

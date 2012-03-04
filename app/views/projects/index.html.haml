@@ -1,0 +1,44 @@
+.row
+  .span12
+    %ul.breadcrumb
+      %li= "Projects"
+.row
+  .span12
+    .page-header
+      %h2 Your Projects
+.row
+  .span3
+    %ul.nav.nav-pills.nav-stacked
+      - @projects.each do |project|
+        %li{ class: @selected_project && @selected_project.id == project.id ? "active" : nil }
+          = link_to '#project_'+project.id.to_s, { data: { toggle: "pill" } } do
+            %span.pull-right
+              %b= project.errors_count
+            = project.name
+            
+  .span9
+    .tab-content
+      - @projects.each do |project|
+        .tab-pane{ id: "project_#{project.id}", class: @selected_project && @selected_project.id == project.id ? "active" : nil }
+          .row
+            .span9
+              .page-header
+                %h3
+                  = link_to "Show Errors", project, class: "btn btn-success btn-large pull-right"
+                  = project.name
+              %h4 Current API key:
+              %br/
+              %pre= project.secret
+          .row
+            .span4
+              %h4 Setting up your Rails 3.x app
+              %p Add the BugFlow gem to your Gemfile. In Gemfile:
+              %pre gem "bugflow"
+              %p Then from your project's Rails.root, run:
+              %pre bundle install
+              %p The Rails gem will catch error in Rails Controllers, Rails Metal and Rack Middleware by default. View the README for a bunch more details about additional functionality provided by the notifier.
+            .span5 
+              %h4 Setting up your rack Application
+              %p In order to use bugflow in a non-Rails rack app, just load the bugflow gem, configure your API key, and use the BugFlow::Rack middleware
+              %p View the README for a bunch more details about additional functionality provided by the notifier.
+
