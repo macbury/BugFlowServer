@@ -22,7 +22,8 @@ class Project < ActiveRecord::Base
   end
 
   def import_one(crash)
-    crash_group_hash = Digest::SHA1.hexdigest([self.id, crash[:location], crash[:exception][:message], crash[:exception][:class_name]].compact.join("-"))
+    raw_msg = crash[:exception][:message].gsub(/0x[0-9A-Z]+/i, '')
+    crash_group_hash = Digest::SHA1.hexdigest([self.id, crash[:location], raw_msg, crash[:exception][:class_name]].compact.join("-"))
     crash_group = self.crash_groups.find_or_initialize_by_hash_uid(crash_group_hash)
     crash_group.message ||= crash[:exception][:message]
     crash_group.class_name = crash[:exception][:class_name]
@@ -31,9 +32,9 @@ class Project < ActiveRecord::Base
     crash_group.crashes_count ||= 0
     crash_group.crashes_count += 1
     crash_group.resolved = false
-    crash_group.save
-
-    crash_group.crashes.create backtrace: crash[:exception][:backtrace], env: crash[:environment]
+    if crash_group.save
+      crash_group.crashes.create backtrace: crash[:exception][:backtrace], env: crash[:environment]
+    end
   end
 
   def errors_count
