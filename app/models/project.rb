@@ -22,7 +22,8 @@ class Project < ActiveRecord::Base
   end
 
   def import_one(crash)
-    raw_msg = crash[:exception][:message].gsub(/0x[0-9A-Z]+/i, '')
+    raw_msg = crash[:exception][:message] || ""
+    raw_msg.gsub!(/0x[0-9A-Z]+/i, '')
     crash_group_hash = Digest::SHA1.hexdigest([self.id, crash[:location], raw_msg, crash[:exception][:class_name]].compact.join("-"))
     crash_group = self.crash_groups.find_or_initialize_by_hash_uid(crash_group_hash)
     crash_group.message ||= crash[:exception][:message]
