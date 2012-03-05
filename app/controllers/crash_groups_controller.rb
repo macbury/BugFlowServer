@@ -3,7 +3,7 @@ class CrashGroupsController < ApplicationController
   before_filter :preload_resource!
 
   def index
-    @groups = @current_project.crash_groups
+    @groups = @current_project.crash_groups.order("last_error_time DESC")
   end
 
   def show
