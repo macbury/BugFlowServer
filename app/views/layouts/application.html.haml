@@ -9,7 +9,7 @@
   %body{ :id => "controller_#{controller.controller_name}_#{controller.action_name}" }
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
+        .container-fluid
           = link_to root_url, class: "brand" do
             BugFlow
             %sup{ style: "color: red;" } Beta
@@ -42,7 +42,7 @@
       .clear 
     
     .clear
-    .container
+    .container-fluid
       = render partial: "shared/flash_messages"
       .clear
       = yield

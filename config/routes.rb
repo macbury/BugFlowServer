@@ -5,6 +5,9 @@ Bugflow::Application.routes.draw do
     end
   end
 
+  scope "v1" do
+    post "/sync" => "v1/sync#sync"
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -54,7 +57,6 @@ Bugflow::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  post "/" => "dashboard#report"
   root :to => 'projects#index'
 
   # See how all your routes lay out with "rake routes"

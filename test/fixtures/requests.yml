@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  group_id: 1
+  params: MyText
+  format: MyString
+  method: MyString
+  path: MyString
+  request_time: 
+  start_time: 2012-03-08 12:18:50
+  env: MyText
+  cpu: 1.5
+  ram: 1
+
+two:
+  group_id: 1
+  params: MyText
+  format: MyString
+  method: MyString
+  path: MyString
+  request_time: 
+  start_time: 2012-03-08 12:18:50
+  env: MyText
+  cpu: 1.5
+  ram: 1

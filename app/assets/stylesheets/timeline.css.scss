@@ -1,0 +1,134 @@
+@import "bourbon";
+
+.summary {
+  top: 341px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: absolute;
+  
+  .tab-pane {
+    overflow-y: scroll;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 36px;
+  }
+}
+
+.timeline {
+  left: 0px;
+  right: 0px;
+  top: 41px;
+  height: 300px;
+  background: white;
+  position: absolute;
+
+  .controllers {
+    width: 320px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: #EAEAEA;
+    border-right: 1px solid #CACACA;
+    border-bottom: 1px solid #CACACA;
+
+    select {
+      width: 100%;
+      height: 24px;
+      border: 0px;
+      @include border-radius(0px);
+    }
+
+    .list {
+      border-top: 1px solid #CACACA;
+      border-bottom: 1px solid #CACACA;
+      overflow: hidden;
+      position: absolute;
+      bottom: 16px;
+      top: 24px;
+      width: 100%;
+      display: block;
+      ul {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+      }
+    } 
+    li a {
+      @include linear-gradient(whitesmoke, #EEE);
+      display: block;
+      color: #777;
+      font-weight: bold;
+      border-bottom: 1px solid darken(#EEE, 5%);
+      padding: 15px 10px;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    li.active a {
+      border-bottom: 1px solid darken(#0480BE, 10%);
+      @include linear-gradient(#149BDF, #0480BE);
+      color: #fff;
+    }
+  }
+  .actions {
+    left: 321px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    .gutter {
+      overflow: hidden;
+      height: 24px;
+      border-bottom: 1px solid #CACACA;
+      .inner {
+        height: 24px;
+        background: #EAEAEA image-url("timeline.gif") repeat-x 50%;
+        width: 2024px;
+
+        .cursor {
+          height: 22px;
+          width: 5px;
+          background: rgba(0,0,0,0.3);
+          border: 1px solid #fff;
+          cursor: move;
+          position: relative;
+          left: 0px;
+          @include border-radius(3px);
+        }
+      }
+    }
+    .list {
+      overflow: scroll;
+      top: 25px;
+      width: 100%;
+      display: block;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      .cursor {
+        width: 1px;
+        background: rgba(0,0,0,0.5);
+        top: 0px;
+        left: 0px;
+        position: absolute;
+        bottom: 0px;
+      }
+      .item {
+        height: 48px;
+        border-bottom: 1px solid #E1E1E1;
+        width: 2024px;
+
+        &.active {
+          background-color: rgba(20, 155, 223, 0.15);
+          border-bottom: 1px solid rgba(20, 155, 223, 0.25);
+        }
+      }
+    }
+  }
+}

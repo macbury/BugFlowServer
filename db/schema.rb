@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304201114) do
+ActiveRecord::Schema.define(:version => 20120308111850) do
 
   create_table "crash_groups", :force => true do |t|
     t.integer  "project_id"
@@ -34,12 +34,36 @@ ActiveRecord::Schema.define(:version => 20120304201114) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "groups", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "location"
+    t.string   "controller"
+    t.string   "action"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "uid"
     t.string   "secret"
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "requests", :force => true do |t|
+    t.integer  "group_id"
+    t.text     "params"
+    t.string   "format"
+    t.string   "method"
+    t.string   "path"
+    t.float    "request_time"
+    t.datetime "start_time"
+    t.text     "env"
+    t.float    "cpu"
+    t.integer  "ram"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project_id: 1
+  location: MyString
+  controller: MyString
+  action: MyString
+
+two:
+  project_id: 1
+  location: MyString
+  controller: MyString
+  action: MyString

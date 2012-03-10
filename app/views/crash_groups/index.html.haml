@@ -1,40 +1,44 @@
-.row
-  .span12
-    %ul.breadcrumb
-      %li
-        = link_to "Projects", projects_path
-        %span.divider /
-      %li= @current_project.name
+.timeline
+  .controllers
+    %select
+      %option Slowest average response time
+      %option Apdex most dissatisfying
+      %option Most time consuming
+      %option Highest throughput
+      %option Standard deviation
+    .list
+      %ul
+        %li.active= link_to "DashboardController#index", "#"
+        - 10.times do
+          %li= link_to "DashboardController#index", "#"
+  .actions
+    .gutter
+      .inner 
+        .cursor
+    .list
+      .cursor
+      .item.active
 
-%ul.nav.nav-pills
-  %li.active= link_to "All", "#"
-  %li= link_to "Fixed", "#"
-  %li= link_to "Pending", "#"
-
-%table.table.table-striped.table-bordered
-  %thead
-    %th.span1 UID
-    %th Message
-    %th.span3 Location
-    %th.span2 Class Name
-    %th.span2 Latest
-    %th.span1 Count
-  %tbody
-    - if @groups.empty?
-      %tr
-        %td{ colspan: 6 }
-          No Errors :)
-    - @groups.each do |group|
-      %tr
-        %td= '#'+group.id.to_s
-        %td= link_to group.message, [@current_project, group]
-        %td= group.location
-        %td= group.class_name
-        %td
-          - if group.last_error_time.nil?
-            undefined
-          - else
-            = distance_of_time_in_words group.last_error_time, Time.zone.now
-            ago
-        %td
-          .label{ :style => "text-align: center", class: group.resolved? ? "label-success" : "label-important" }= group.crashes_count || 0
+      - 10.times do
+        .item
+.summary
+  .subnav
+    %ul.nav.nav-pills
+      %li.active= link_to "Requests", "#"
+      %li= link_to "Summary", "#"
+  .tab-content
+    .tab-pane.active
+      %table.table
+        %thead
+          %tr
+            %th Start
+            %th Type
+            %th Status
+            %th Total Time
+        %tbody
+          - 30.times do
+            %tr
+              %td A
+              %td B
+              %td C
+              %td D
