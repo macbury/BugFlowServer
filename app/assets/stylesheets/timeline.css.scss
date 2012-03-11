@@ -1,5 +1,4 @@
 @import "bourbon";
-
 .summary {
   top: 341px;
   left: 0px;
@@ -70,9 +69,7 @@
     }
 
     li.active a {
-      border-bottom: 1px solid darken(#0480BE, 10%);
-      @include linear-gradient(#149BDF, #0480BE);
-      color: #fff;
+      @include linear-gradient(#fff,whitesmoke);
     }
   }
   .actions {
@@ -131,4 +128,18 @@
       }
     }
   }
+}
+
+.info-pane {
+  position: absolute;
+  overflow-y: scroll;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  width: 50%;
+  background: #fff;
+  z-index: 99999;
+  min-width: 480px;
+  @include box-shadow(#666 0px 2px 5px);
+  padding: 10px 20px;
 }

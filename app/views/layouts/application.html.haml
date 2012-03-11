@@ -16,7 +16,7 @@
           %ul.nav.pull-left
             %li.dropdown
               = link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do
-                %i.icon-fire
+                %i.icon-fire.icon-white
                 My Apps
                 %b.caret
               %ul.dropdown-menu
@@ -26,18 +26,18 @@
                 %li= link_to "Show All", projects_path
             %li
               = link_to "#" do
-                %i.icon-cog
+                %i.icon-cog.icon-white
                 Settings
 
             %li.divider-vertical
             %li
               = link_to new_project_path, id: "submit_app" do
-                %i.icon-plus
+                %i.icon-plus.icon-white
                 Add project
           %ul.nav.pull-right
             %li
               = link_to "#" do
-                %i.icon-off
+                %i.icon-off.icon-white
                 Logout
       .clear 
     

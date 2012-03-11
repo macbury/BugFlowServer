@@ -26,19 +26,137 @@
     %ul.nav.nav-pills
       %li.active= link_to "Requests", "#"
       %li= link_to "Summary", "#"
+      %li= link_to "Errors", "#"
   .tab-content
     .tab-pane.active
-      %table.table
+      %table.table.table-striped.table-condensed
         %thead
           %tr
-            %th Start
-            %th Type
-            %th Status
+            %th{ style: "width: 14px" }
+            %th{ style: "width: 36px" } Start
+            %th.span1 Type
+            %th.span1 Status
+            %th Database Time
+            %th View Time
+            %th Render Count
+            %th Query Count
             %th Total Time
+            %th WebBrowser
+            %th System
+            %th Screen Resolution
         %tbody
           - 30.times do
             %tr
-              %td A
-              %td B
-              %td C
-              %td D
+              %td 
+                %i.icon-chevron-right
+              %td 13:00
+              %td GET
+              %td 200
+              %td 10000 ms
+              %td E
+              %td E
+              %td E
+              %td E
+              %td E
+              %td E
+              %td E
+.info-pane
+  .page-header
+    %a.close &times;
+    %h4 Request Summary
+  %table.table.table-striped.table-bordered.table-condensed
+    %tr
+      %th.span2 Status
+      %td 200
+    %tr
+      %th.span2 Method
+      %td GET
+    %tr
+      %th.span2 Database Time
+      %td 200
+    %tr
+      %th.span2 View Time
+      %td 200
+    %tr
+      %th.span2 Render Count
+      %td 200
+    %tr
+      %th.span2 Query Count
+      %td 200
+    %tr
+      %th.span2 Total Time
+      %td 200
+    %tr
+      %th.span2 WebBrowser
+      %td 200
+    %tr
+      %th.span2 System
+      %td 200
+    %tr
+      %th.span2 Screen Resolution
+      %td 200
+    %tr
+      %th.span2 IP
+      %td 200
+  .page-header
+    %h4 Queries
+  %table.table.table-striped.table-bordered.table-condensed
+    %thead
+      %tr
+        %th Name
+        %th Time
+        %th SQL
+    %tbody
+      %tr
+        %td Project Load
+        %td 0.4ms
+        %td SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+      %tr
+        %td Project Load
+        %td 0.4ms
+        %td SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+      %tr
+        %td Project Load
+        %td 0.4ms
+        %td SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+      %tr
+        %td Project Load
+        %td 0.4ms
+        %td SELECT `projects`.* FROM `projects` WHERE `projects`.`id` = 1 LIMIT 1
+  .page-header
+    %h4 Render
+  %table.table.table-striped.table-bordered.table-condensed
+    %thead
+      %tr
+        %th Time
+        %th File
+    %tbody
+      %tr
+        %td 0.4ms
+        %td shared/_flash_messages.html.haml
+      %tr
+        %td 0.4ms
+        %td shared/_flash_messages.html.haml
+      %tr
+        %td 0.4ms
+        %td shared/_flash_messages.html.haml
+      %tr
+        %td 0.4ms
+        %td shared/_flash_messages.html.haml
+  .page-header
+    %h4 External Requests
+  %table.table.table-striped.table-bordered.table-condensed
+    %thead
+      %tr
+        %th Time
+        %th URL
+    %tbody
+      %tr
+        %td 0.4ms
+        %td api.twitter.com
+      %tr
+        %td 0.4ms
+        %td api.twitter.com
+      %tr
+        %td 0.4ms
+        %td api.twitter.com

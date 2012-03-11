@@ -55,18 +55,18 @@ $(document).ready ->
     item = $(this)
     items.push item
 
-  $('.timeline .controllers').resizable
-    containment: 'parent'
-    handles: "e"
-    grid: 25
-    resize: (event, ui) ->
-      actions.css left: (ui.size.width)+"px"
-  timeline = $('.timeline')
-  timeline.resizable
-    handles: "s"
-    grid: 25
-    resize: (event, ui) ->
-      summary.css top: (timeline.position().top + ui.size.height)+"px"
+  #$('.timeline .controllers').resizable
+  #  containment: 'parent'
+  #  handles: "e"
+  #  grid: 25
+  #  resize: (event, ui) ->
+  #    actions.css left: (ui.size.width)+"px"
+  #timeline = $('.timeline')
+  #timeline.resizable
+  #  handles: "s"
+  #  grid: 25
+  #  resize: (event, ui) ->
+  #    summary.css top: (timeline.position().top + ui.size.height)+"px"
   #renderLoop()
 
     
