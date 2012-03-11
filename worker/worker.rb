@@ -10,7 +10,7 @@ class Worker
     sleep(0.5)
     
     log "Connecting"
-    @connection = AMQP.connect :user => "server", :pass => "server", :vhost => "/requests"
+    @connection = AMQP.connect :user => "guest", :pass => "guest", :vhost => "/"
     log "Adding channel"
     @channel = AMQP::Channel.new(@connection, :auto_recovery => true)
     @channel.prefetch(10)
@@ -33,8 +33,8 @@ class Worker
   
   
   def bind
-    @channel.queue("task.complete", :durable => true, :auto_delete => false).subscribe(:ack => true) do |metadata, payload|
-      # TODO import done
+    @channel.queue("requests.ruby", :durable => true, :auto_delete => false).subscribe(:ack => true) do |metadata, payload|
+      log "recived!"
       metadata.ack
     end
   end
