@@ -1,6 +1,6 @@
 @import "bourbon";
 .summary {
-  top: 341px;
+  top: 343px;
   left: 0px;
   right: 0px;
   bottom: 0px;
@@ -19,7 +19,7 @@
 .timeline {
   left: 0px;
   right: 0px;
-  top: 41px;
+  top: 43px;
   height: 300px;
   background: white;
   position: absolute;
@@ -84,6 +84,7 @@
       border-bottom: 1px solid #CACACA;
       .inner {
         height: 24px;
+        padding-right: 16px;
         background: #EAEAEA image-url("timeline.gif") repeat-x 50%;
         width: 2024px;
 

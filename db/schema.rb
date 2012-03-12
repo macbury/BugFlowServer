@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120308111850) do
     t.text     "message"
     t.string   "class_name"
     t.string   "location"
-    t.integer  "crashes_count"
+    t.integer  "crashes_count",   :default => 0
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.datetime "last_error_time"

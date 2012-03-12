@@ -28,6 +28,11 @@ $(document).ready ->
   list = $(".actions .list")
   listCursor = list.find(".cursor")
   summary = $('.summary')
+
+  $('.close').click ->
+    $(this).parents(".info-pane").fadeOut()
+    false
+
   list.scroll ->
     scrollTop = $(this).scrollTop()
     scrollLeft = $(this).scrollLeft()
